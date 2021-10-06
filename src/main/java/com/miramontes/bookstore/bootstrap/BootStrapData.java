@@ -2,8 +2,10 @@ package com.miramontes.bookstore.bootstrap;
 
 import com.miramontes.bookstore.model.Author;
 import com.miramontes.bookstore.model.Book;
+import com.miramontes.bookstore.model.Publisher;
 import com.miramontes.bookstore.repositories.AuthorRepository;
 import com.miramontes.bookstore.repositories.BookRepository;
+import com.miramontes.bookstore.repositories.PublisherRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -12,11 +14,16 @@ public class BootStrapData implements CommandLineRunner {
 
     private final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
+    private final PublisherRepository publisherRepository;
 
     //    @Autowired
-    public BootStrapData(AuthorRepository authorRepository, BookRepository bookRepository) {
+    public BootStrapData(
+            AuthorRepository authorRepository,
+            BookRepository bookRepository,
+            PublisherRepository publisherRepository) {
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
+        this.publisherRepository = publisherRepository;
     }
 
     @Override
@@ -39,6 +46,10 @@ public class BootStrapData implements CommandLineRunner {
         authorRepository.save(author2);
         bookRepository.save(book2);
 
+        Publisher publisher = new Publisher("Address 1", "City 1", "State 1", "111111");
+        publisherRepository.save(publisher);
+
         System.out.println("bookRepository.count() = " + bookRepository.count());
+        System.out.println("publisherRepository.count() = " + publisherRepository.count());
     }
 }
