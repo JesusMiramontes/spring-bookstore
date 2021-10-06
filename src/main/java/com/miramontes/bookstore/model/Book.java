@@ -1,9 +1,7 @@
 package com.miramontes.bookstore.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Book {
@@ -13,15 +11,18 @@ public class Book {
     private Long id;
     private String title;
     private String isbn;
-    private Author author;
+
+    @ManyToMany
+    @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "author_id"))
+    private Set<Author> authors;
 
     public Book() {
     }
 
-    public Book(String title, String isbn, Author author) {
+    public Book(String title, String isbn, Set<Author> authors) {
         this.title = title;
         this.isbn = isbn;
-        this.author = author;
+        this.authors = authors;
     }
 
     public Long getId() {
@@ -48,20 +49,21 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public Author getAuthor() {
-        return author;
+    public Set<Author> getAuthor() {
+        return authors;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public void setAuthor(Set<Author> authors) {
+        this.authors = authors;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Book{");
-        sb.append("title='").append(title).append('\'');
+        sb.append("id=").append(id);
+        sb.append(", title='").append(title).append('\'');
         sb.append(", isbn='").append(isbn).append('\'');
-        sb.append(", author=").append(author);
+        sb.append(", authors=").append(authors);
         sb.append('}');
         return sb.toString();
     }
