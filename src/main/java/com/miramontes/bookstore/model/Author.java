@@ -65,7 +65,6 @@ public class Author {
         final StringBuilder sb = new StringBuilder("Author{");
         sb.append("firstName='").append(firstName).append('\'');
         sb.append(", lastName='").append(lastName).append('\'');
-        sb.append(", books=").append(books);
         sb.append('}');
         return sb.toString();
     }

@@ -98,7 +98,6 @@ public class Publisher {
         sb.append(", city='").append(city).append('\'');
         sb.append(", state='").append(state).append('\'');
         sb.append(", zip='").append(zip).append('\'');
-        sb.append(", books=").append(books);
         sb.append('}');
         return sb.toString();
     }
