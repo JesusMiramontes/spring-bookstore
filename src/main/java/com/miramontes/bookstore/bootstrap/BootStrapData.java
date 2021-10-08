@@ -30,7 +30,8 @@ public class BootStrapData implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Author author1 = new Author("Jesus", "Miramontes");
         Book book1 = new Book("My book 1", "123123");
-        Publisher publisher1 = new Publisher("Publisher 1", "Address 1", "City 1", "State 1", "111111");
+        Publisher publisher1 =
+                new Publisher("Publisher 1", "Address 1", "City 1", "State 1", "111111");
         publisherRepository.save(publisher1);
 
         book1.setPublisher(publisher1);
@@ -44,7 +45,8 @@ public class BootStrapData implements CommandLineRunner {
 
         Book book2 = new Book("My book 2", "22222");
         Author author2 = new Author("John", "Cook");
-        Publisher publisher2 = new Publisher("Publisher 2", "Address 2", "City 2", "State 2", "22222");
+        Publisher publisher2 =
+                new Publisher("Publisher 2", "Address 2", "City 2", "State 2", "22222");
         publisherRepository.save(publisher2);
 
         book2.setPublisher(publisher2);
