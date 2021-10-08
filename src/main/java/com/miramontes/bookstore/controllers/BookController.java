@@ -1,4 +1,4 @@
-package com.miramontes.bookstore;
+package com.miramontes.bookstore.controllers;
 
 import com.miramontes.bookstore.repositories.BookRepository;
 import org.springframework.stereotype.Controller;
@@ -6,11 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class controllersBookController {
+public class BookController {
 
     private final BookRepository bookRepository;
 
-    public controllersBookController(BookRepository bookRepository) {
+    public BookController(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
 
